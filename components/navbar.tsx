@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { Heart, ShoppingCart, User } from "lucide-react";
 import MenuList from "./menu-list";
 import ItemsMenuMobile from "./items-menu-mobile";
+import { ModeToggle } from "./mode-toggle";
 
 function Navbar() {
   const router = useRouter();
@@ -34,6 +35,7 @@ function Navbar() {
 
         <User className="cursor-pointer" />
       </div>
+      <ModeToggle />
     </div>
   );
 }
