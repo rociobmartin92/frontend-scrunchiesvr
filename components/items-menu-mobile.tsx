@@ -1,46 +1,22 @@
+import {  Menu } from "lucide-react";
+import { Button } from "./ui/button";
 
-
-import { Button } from "./ui/button"
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "./ui/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import Link from "next/link";
 
 export function ItemsMenuMobile() {
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="outline">Open popover</Button>
+      <PopoverTrigger >
+        <Menu />
       </PopoverTrigger>
-      <PopoverContent className="w-80">
-        <div className="grid gap-4">
-          <div className="space-y-2">
-            <h4 className="font-medium leading-none">Dimensions</h4>
-            <p className="text-sm text-muted-foreground">
-              Set the dimensions for the layer.
-            </p>
-          </div>
-          <div className="grid gap-2">
-            <div className="grid grid-cols-3 items-center gap-4">
-            <p>Wanda Nara</p>
-            </div>
-            <div className="grid grid-cols-3 items-center gap-4">
-            <p>Wanda Nara</p>
-            </div>
-            <div className="grid grid-cols-3 items-center gap-4">
-            <p>Wanda Nara</p>
-            </div>
-            <div className="grid grid-cols-3 items-center gap-4">
-           <p>Wanda Nara</p>
-            </div>
-          </div>
-        </div>
+      <PopoverContent className="mx-auto  flex-col flex gap-2  max-w-40">
+        <Link href="/accesories/hairClips">Chuflines</Link>
+        <Link href="/accesories/scrunchies">Hebillas</Link>
+        <Link href="/accesories/bandanas">Bandanas</Link>
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 
-
-export default ItemsMenuMobile
+export default ItemsMenuMobile;
