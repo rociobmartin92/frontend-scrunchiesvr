@@ -11,20 +11,22 @@ import {
 
 const carouselItems = [
   {
-    title: "🚚 Envío rápido en 48 horas",
-    description: "Recibe tus accesorios en tiempo récord o retíralos en tienda.",
+    title: "🚚 Retira tus productos por farmacia SanMar en 48 horas",
+    subtitle: "Recibe tus accesorios pagando envío o retíralos en nuestra tienda.",
+    description: "20 de Junio 867, R8336 Villa Regina, Río Negro"
   },
   {
     title: "🎉 15% de descuento",
-    description: "Aprovecha un 15% OFF en compras superiores a $15.000.",
+    subtitle: "Aprovecha un 10% OFF en compras superiores a $15.000.",
+    description: "Sólo en efectivo o transferencia"
   },
   {
     title: "🔄 Devoluciones fáciles",
-    description: "Si no te encanta, tienes 30 días para devolverlo sin costo.",
+    subtitle: "Si no te encanta, tienes 7 días para devolverlo sin costo.",
   },
   {
     title: "🧢 ¡Próximamente!",
-    description: "Muy pronto encontrarás gorras en nuestra tienda. ¡Estén atentos!",
+    subtitle: "Muy pronto encontrarás gorras en nuestra tienda. ¡Estén atentos!",
   },
 ];
 
@@ -35,7 +37,7 @@ const BannerCards = () => {
         align: "start",
         loop: true,
       }}
-      className="w-full max-w-screen-md mx-auto mt-6"
+      className="w-full max-w-screen-xl mx-auto mt-6"
     >
       <CarouselContent>
         {carouselItems.map((item, index) => (
@@ -43,7 +45,8 @@ const BannerCards = () => {
             <Card className="shadow-md">
               <CardContent className="flex flex-col items-center justify-center p-6 text-center">
                 <h3 className="text-lg font-semibold text-pink-700">{item.title}</h3>
-                <p className="text-sm  mt-2">{item.description}</p>
+                <p className="text-sm  mt-2">{item.subtitle}</p>
+                {item.description && <p className="text-xs  mt-2">{item.description}</p>}
               </CardContent>
             </Card>
           </CarouselItem>

@@ -1,11 +1,39 @@
-import React from 'react'
+"use client";
+
+import { apiInstance } from "@/services/api";
+import { Product, ProductFilters } from "@/types";
+
+import { useEffect, useState } from "react";
 
 const FeaturedProducs = () => {
-  return (
-    <div className='max-w-6xl mx-auto py-4 sm:py-16 sm:px-24'> 
-    <h3 className='px-6 text-3xl sm:pb-8'>Productos destacados</h3>
-    </div>
-  )
-}
+  const [bestSellerProdcuts, setBestSellerProdcuts] = useState<Product[]>([]);
+  const [error, setError] = useState("");
 
-export default FeaturedProducs
+  const getBestSellerProducts = async () => {
+    const filters: ProductFilters = { active: true };
+    const products = await apiInstance.get("/producs", { params: filters });
+
+    console.log("products data", products.data.data);
+    if (products) {
+      setBestSellerProdcuts(products.data.data);
+    } else {
+      setError("No hay productos disponibles");
+    }
+  };
+
+  useEffect(() => {
+    try {
+      getBestSellerProducts();
+    } catch (e) {
+      console.log("hubo un error en la solicitud de productos");
+    }
+  }, []);
+
+  return (
+    <div className="max-w-6xl mx-auto py-4 sm:py-16">
+      <h3 className="text-2xl sm:pb-8">Más Vendidos</h3>
+    </div>
+  );
+};
+
+export default FeaturedProducs;

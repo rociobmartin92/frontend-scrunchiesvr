@@ -1,7 +1,5 @@
 import BannerCards from "@/components/banner-cards";
-import BannerImages from "@/components/banner-images";
-import Footer from "@/components/footer";
-import Image from "next/image";
+import FeaturedProducs from "@/components/features-products";
 
 export default function Home() {
   return (
@@ -9,6 +7,7 @@ export default function Home() {
       <main>
       {/* <BannerImages /> */}
       <BannerCards />
+      <FeaturedProducs />
       </main>
     </div>
   );
