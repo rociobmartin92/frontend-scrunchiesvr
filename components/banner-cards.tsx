@@ -1,12 +1,12 @@
+"use client";
 import * as React from "react";
+import Autoplay from "embla-carousel-autoplay"
 
 import { Card, CardContent } from "./ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "./ui/carousel";
 
 const carouselItems = [
@@ -26,7 +26,8 @@ const carouselItems = [
   },
   {
     title: "🧢 ¡Próximamente!",
-    subtitle: "Muy pronto encontrarás gorras en nuestra tienda. ¡Estén atentos!",
+    subtitle: "Muy pronto encontrarás gorras en nuestra tienda",
+    description: "¡Estén atentos!"
   },
 ];
 
@@ -37,12 +38,17 @@ const BannerCards = () => {
         align: "start",
         loop: true,
       }}
-      className="w-full max-w-screen-xl mx-auto mt-6"
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
+      className="w-full max-w-screen-2xl mx-auto mt-6 "
     >
-      <CarouselContent>
+      <CarouselContent className=" ">
         {carouselItems.map((item, index) => (
           <CarouselItem key={index} className="">
-            <Card className="shadow-md">
+            <Card className="shadow-md h-32">
               <CardContent className="flex flex-col items-center justify-center p-6 text-center">
                 <h3 className="text-lg font-semibold text-pink-700">{item.title}</h3>
                 <p className="text-sm  mt-2">{item.subtitle}</p>
@@ -52,8 +58,6 @@ const BannerCards = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   );
 };
