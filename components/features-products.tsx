@@ -1,9 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import useGetProducts from "@/services/useGetProducts";
-import BannerImages from "./banner-images";
-import { useEffect, useState } from "react";
 import SkeletonSchema from "./skeleton-schema";
+import { Expand, ShoppingCart } from "lucide-react";
+
 import {
   Carousel,
   CarouselContent,
@@ -11,11 +12,12 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { Card, CardContent } from "./ui/card";
-import { Expand, ShoppingCart } from "lucide-react";
+import IconButton from "./icon-button";
 
 const publicAssetsUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const FeaturedProducs = () => {
+  const router = useRouter();
   const { result, error, loading } = useGetProducts({ bestSeller: true });
 
   return (
@@ -32,20 +34,35 @@ const FeaturedProducs = () => {
           {loading ? (
             <SkeletonSchema grid={3} />
           ) : (
-            result.map((product) => 
+            result.map((product) => (
               <Card className="mx-3">
-              <CardContent className="flex w-96 items-center justify-center p-5">
-                <img src={`${publicAssetsUrl}${product.images[0].url}`} alt="image-banner" className="mb-8" style={{width: "25rem", height: "25rem"}} />
-                <div className="absolute bottom-4 items-cente">
-                  {/* <div className="flex justify-center w-full transition duration-200 opacity-0 hover:opacity-100"> */}
-                  <div className="flex justify-center w-full ">
-                    <Expand className="mx-24 opacity-80 transition duration-200 hover:opacity-100"  color="rgb(190 24 93 / var(--tw-text-opacity, 1))"/>
-                    <ShoppingCart className="mx-24 opacity-80 transition duration-200 hover:opacity-100" color="rgb(190 24 93 / var(--tw-text-opacity, 1))"/>
+                <CardContent className="flex w-96 h-auto items-center justify-center p-5">
+                  <img
+                    src={`${publicAssetsUrl}${product.images[0].url}`}
+                    alt="image-banner"
+     
+                    style={{ width: "21rem", height: "21rem" }}
+                  />
+                  <div className="absolute bottom-8 items-cente">
+                    <div className="flex justify-center w-full ">
+                      <IconButton
+                        onClick={() => router.push(`/producs/${product.id}`)}
+                        icon={
+                          <Expand color="rgb(190 24 93 / var(--tw-text-opacity, 1))" size={20}/>
+                        }
+                        className="text-gray-600 mx-2"
+                      />
+                      <IconButton
+                        onClick={() => router.push("/cart")}
+                        icon={<ShoppingCart size={20}  />}
+                        className="text-gray-600 mx-2"
+                      />
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-            )
+                
+                </CardContent>
+              </Card>
+            ))
           )}
         </CarouselContent>
         <CarouselPrevious />

@@ -14,7 +14,7 @@ function Navbar() {
       </h1>
 
       <div className="flex sm:hidden">
-      <ItemsMenuMobile />
+        <ItemsMenuMobile />
       </div>
 
       <div className="items-center justify-between hidden sm:flex">
@@ -34,8 +34,8 @@ function Navbar() {
         />
 
         <User className="cursor-pointer" />
+        <ModeToggle />
       </div>
-      <ModeToggle />
     </div>
   );
 }
