@@ -14,7 +14,6 @@ const useGetProducts = (filters?: any) => {
         
         let url = "/producs"; 
 
-        console.log("filters", filters)
         if (filters && Object.keys(filters).length > 0) {
           const queryParams = Object.keys(filters)
             .map((key) => {
@@ -34,12 +33,10 @@ const useGetProducts = (filters?: any) => {
     
         const response = await apiInstance.get(url);
 
-        console.log("Productos recibidos:", response.data); 
         setResult(response.data.data || []); 
       } catch (error) {
         console.error("Error al obtener los productos:", error);
-        setError("Hubo un error al obtener los productos.");
-        setResult([]); 
+        setError("Ocurrió un error al obtener los productos.");
       } finally {
         setLoading(false);
       }
