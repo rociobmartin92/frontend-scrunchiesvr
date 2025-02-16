@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 
 const DiscountCard = () => {
   return (
-    <Card className="max-w-lg mx-auto text-center p-6  border-red-700">
+    <Card className="max-w-lg mt-8 sm:mt-0 mx-5 sm:mx-auto text-center p-6  border-red-700">
       <CardContent className="flex flex-col items-center gap-4">
         <h2 className="text-xl font-bold text-red-700">
           Consigue hasta un 15% de descuento

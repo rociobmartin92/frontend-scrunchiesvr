@@ -13,15 +13,15 @@ const ChooseCategory = () => {
   const { result, error, loading } = useGetCategories();
 
   return (
-    <div className="max-w-6xl mx-auto  sm:py-10">
-      <HeaderTitle title="Elige tu categoría favorita" />
-      <div className="flex justify-center">
+    <div className="max-w-6xl mx-auto  sm:py-10 mt-5 ">
+      <HeaderTitle title="Elige tu categoría favorita" className="text-center" />
+      <div className="flex justify-center w-full flex-col sm:flex-row mt-7 items-center ">
 
       {loading && !result && <SkeletonSchema grid={3} />}
       {result.map((category) => (
         <Link 
         key={category.id} 
-        href={`${base_url}/api/categories/${category.id}`}
+        href={`/categories/${category.slug}`}
         
         className="relative max-w-xs overflow-hidden bg-no-repeat bg-cove rounded-lg"
         >

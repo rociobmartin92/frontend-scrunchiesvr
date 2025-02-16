@@ -43,7 +43,7 @@ const BannerCards = () => {
           delay: 2000,
         }),
       ]}
-      className="w-full max-w-screen-2xl mx-auto mt-6 "
+      className="w-full max-w-screen-2xl mx-auto items-center mt-6 "
     >
       <CarouselContent className=" ">
         {carouselItems.map((item, index) => (

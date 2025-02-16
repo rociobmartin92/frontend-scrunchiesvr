@@ -5,6 +5,7 @@ import useGetProducts from "@/services/useGetProducts";
 import SkeletonSchema from "./skeleton-schema";
 import { Expand, ShoppingCart } from "lucide-react";
 
+import { isMobile } from "@/utils/isMobile";
 import {
   Carousel,
   CarouselContent,
@@ -19,16 +20,17 @@ import { base_url } from "@/services/api";
 const FeaturedProducs = () => {
   const router = useRouter();
   const { result, error, loading } = useGetProducts({ bestSeller: true });
+  const typeOfWindow: boolean = isMobile();
 
   return (
-    <div className="max-w-6xl mx-auto  sm:py-10">
+    <div className="max-w-6xl mx-auto sm:py-10  items-center">
       <HeaderTitle title="Más Vendidos" />
       <Carousel
         opts={{
           align: "start",
           loop: false,
         }}
-        className="w-full max-w-screen-xl"
+        className="w-full max-w-screen-xl mt-7"
       >
         <CarouselContent className="ml-2 ">
           {loading && !result && <SkeletonSchema grid={3} />}
@@ -63,8 +65,12 @@ const FeaturedProducs = () => {
             </Card>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        {!typeOfWindow && (
+          <>
+            <CarouselPrevious />
+            <CarouselNext />
+          </>
+        )}
       </Carousel>
     </div>
   );
