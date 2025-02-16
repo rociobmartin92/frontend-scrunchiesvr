@@ -1,19 +1,24 @@
 "use client";
 
+import HeaderTitle from "@/components/header-title";
 import useGetProducts from "@/services/useGetProducts";
+import { Product } from "@/types";
 import { useParams, useRouter } from "next/navigation";
+import FiltersColorsControl from "../components/filters-control-category";
+
+interface ResponseType {
+  result: Product;
+  error: string;
+  loading: boolean;
+}
 
 const Page = () => {
-  const params = useParams();
-  const slug = params.categorySlug;
 
-  const { result, error, loading } = useGetProducts({ category: { slug: slug } });
-
-  console.log("slug", slug)
-
-  console.log("result", result)
-
-  return <>from page category</>;
+  return (
+    <div>
+      <FiltersColorsControl />
+    </div>
+  );
 };
 
 export default Page;

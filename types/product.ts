@@ -13,4 +13,6 @@ export interface Product {
   publishedAt: string;
   bestSeller: boolean;
   images: { id: number; url: string }[];
+  category: {categoryName: string, slug: string  }
+  color: string
 }
