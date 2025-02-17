@@ -15,4 +15,5 @@ export interface Product {
   images: { id: number; url: string }[];
   category: {categoryName: string, slug: string  }
   color: string
+  favorite?: boolean
 }

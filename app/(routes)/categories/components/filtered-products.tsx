@@ -4,17 +4,20 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { base_url } from "@/services/api";
+import { useCart } from "@/state/use-cart";
 import { Product } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
 
 export const FilteredProducts = ({ products }: { products: Product[] }) => {
+  const { addItem } = useCart();
+
   return (
     <div className="product-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {products.map((product) => (
         <div
           key={product.id}
-          className="product-card bg-white shadow-lg rounded-lg overflow-hidden"
+          className="product-card  shadow-lg rounded-lg overflow-hidden"
         >
           <div className="relative">
             <Carousel
@@ -29,7 +32,7 @@ export const FilteredProducts = ({ products }: { products: Product[] }) => {
               ]}
               className="w-full h-96 overflow-hidden"
             >
-              <CarouselContent className=" ">
+              <CarouselContent>
                 {product.images.map((image, index) => (
                   <CarouselItem key={index} className="w-full h-full">
                     <img
@@ -41,6 +44,7 @@ export const FilteredProducts = ({ products }: { products: Product[] }) => {
                 ))}
               </CarouselContent>
             </Carousel>
+
             {/* Precio encima de la imagen */}
             <div className="absolute opacity-70 top-2 left-2 bg-pink-700 text-white px-4 py-2 rounded-lg">
               ${product.price}
@@ -53,8 +57,12 @@ export const FilteredProducts = ({ products }: { products: Product[] }) => {
             <h2 className="product-description text-sm text-gray-600 mt-2">
               {product.description}
             </h2>
+
             {/* Botón de agregar al carrito */}
-            <button className="add-to-cart-btn mt-4 w-full border bg-white text-black py-2 rounded-lg hover:bg-pink-800 hover:text-white transition duration-300">
+            <button
+              onClick={() => addItem(product)}
+              className="add-to-cart-btn mt-4 w-full border py-2 rounded-lg hover:bg-pink-800 hover:text-white transition duration-300"
+            >
               <p className="text-sm"> Agregar al carrito </p>
             </button>
           </div>

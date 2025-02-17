@@ -1,9 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 import useGetProducts from "@/services/useGetProducts";
 import SkeletonSchema from "./skeleton-schema";
-import { Expand, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 
 import { isMobile } from "@/utils/isMobile";
 import {
@@ -16,11 +16,20 @@ import { Card, CardContent } from "./ui/card";
 import IconButton from "./icon-button";
 import HeaderTitle from "./header-title";
 import { base_url } from "@/services/api";
+import { useCart } from "@/state/use-cart";
+import { useFavorites } from "@/state/use-favorites";
+
 
 const FeaturedProducs = () => {
-  const router = useRouter();
-  const { result, error, loading } = useGetProducts({ bestSeller: true });
+  const filters = useMemo(() => {
+    return { bestSeller: true };
+  }, []);
+
+  const { result, error, loading } = useGetProducts(filters);
   const typeOfWindow: boolean = isMobile();
+
+  const { addItem } = useCart();
+  const { addFavorite, items: favorites } = useFavorites();
 
   return (
     <div className="max-w-6xl mx-auto sm:py-10  items-center">
@@ -45,17 +54,24 @@ const FeaturedProducs = () => {
                 <div className="absolute bottom-8 items-center">
                   <div className="flex justify-center w-full ">
                     <IconButton
-                      onClick={() => router.push(`/producs/${product.id}`)}
+                      onClick={() => addFavorite(product)}
                       icon={
-                        <Expand
+                        <Heart
                           color="rgb(190 24 93 / var(--tw-text-opacity, 1))"
                           size={20}
+                          className={
+                            favorites.some((el) => el.id === product.id)
+                              ? "fill-pink-700"
+                              : "transition duration-200 hover:fill-pink-700"
+                          }
                         />
                       }
                       className="text-gray-600 mx-2"
                     />
                     <IconButton
-                      onClick={() => router.push("/cart")}
+                      onClick={() => {
+                        addItem(product);
+                      }}
                       icon={<ShoppingCart size={20} />}
                       className="text-gray-600 mx-2"
                     />

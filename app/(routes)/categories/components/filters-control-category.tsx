@@ -1,11 +1,13 @@
 "use_client";
 
+import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import useGetColorsList from "@/services/useGetColorsList";
-import { SelectArrayStrings } from "./select-array-strings";
+
 import useGetProducts from "@/services/useGetProducts";
+
+import { SelectArrayStrings } from "./select-array-strings";
 import HeaderTitle from "@/components/header-title";
-import { useMemo, useState } from "react";
 import { FilteredProducts } from "./filtered-products";
 
 const FiltersColorsControl = () => {
