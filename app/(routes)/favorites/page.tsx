@@ -3,13 +3,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Heart, Trash2 } from "lucide-react";
+import { Heart, MoreVertical, Plus, ShoppingBag, ShoppingBagIcon, Trash2 } from "lucide-react";
 import { Product } from "@/types";
 import { base_url } from "@/services/api";
 import { useFavorites } from "@/state/use-favorites";
+import { useCart } from "@/state/use-cart";
 
-const FavoritesPage = () => {
+const Page = () => {
   const { items, removeFavorite, removeAllFavorites } = useFavorites();
+  const {addItem} = useCart()
 
   return (
     <div className="max-w-3xl border mx-auto p-4 bg-white rounded-lg shadow-md">
@@ -35,14 +37,23 @@ const FavoritesPage = () => {
                       {product.productName}
                     </h2>
                     <p className="text-sm text-gray-500">$ {product.price}</p>
+                    <div className="flex items-center gap-3">
                     <Button
                       size="sm"
-                      variant="destructive"
                       className="mt-2"
                       onClick={() => removeFavorite(product)}
                     >
-                      <Trash2 className="w-4 h-4 mr-1" /> Eliminar
+                      <Trash2 className="w-4 h-4 mr-1 fill-red-600" />
                     </Button>
+                    <Button
+                      size="sm"
+                      className="mt-2"
+                      onClick={() => addItem(product)}
+                    >
+                      {/* <Trash2 className="w-4 h-4 mr-1" />  */}
+                      <Plus className="w-4 h-4" />
+                    </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -54,7 +65,7 @@ const FavoritesPage = () => {
             className="w-full"
             onClick={removeAllFavorites}
           >
-            Vaciar Favoritos
+            Eliminar Favoritos
           </Button>
         </>
       )}
@@ -62,4 +73,4 @@ const FavoritesPage = () => {
   );
 };
 
-export default FavoritesPage;
+export default Page;
