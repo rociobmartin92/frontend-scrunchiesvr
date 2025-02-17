@@ -5,11 +5,13 @@ import MenuList from "./menu-list";
 import ItemsMenuMobile from "./items-menu-mobile";
 import { ModeToggle } from "./mode-toggle";
 import { useCart } from "@/state/use-cart";
+import { useFavorites } from "@/state/use-favorites";
 
 function Navbar() {
   const router = useRouter();
 
   const { items } = useCart();
+  const { items: favorites } = useFavorites();
 
   return (
     <div className="flex items-center justify-between p-4 mx-auto cursor-pointer max-w-full">
@@ -37,12 +39,10 @@ function Navbar() {
             <span>{items.length}</span>
           </div>
         )}
-
-        <Heart
-          strokeWidth="1"
-          className="cursor-pointer"
-          onClick={() => router.push("/favorites")}
-        />
+        <div className="flex gap-1" onClick={() => router.push("/favorites")}>
+          <Heart strokeWidth="1" className="cursor-pointer" />
+          <span>{favorites.length}</span>
+        </div>
 
         <User className="cursor-pointer" />
         <ModeToggle />
