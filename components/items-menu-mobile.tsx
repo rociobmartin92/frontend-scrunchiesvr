@@ -11,9 +11,10 @@ export function ItemsMenuMobile() {
         <Menu />
       </PopoverTrigger>
       <PopoverContent className="mx-auto  flex-col flex gap-2  max-w-40">
-        <Link href="/accesories/hairClips">Chuflines</Link>
-        <Link href="/accesories/scrunchies">Hebillas</Link>
-        <Link href="/accesories/bandanas">Bandanas</Link>
+        <Link href="/hairClips">Chuflines</Link>
+        <Link href="/scrunchies">Hebillas</Link>
+        <Link href="/bandanas">Bandanas</Link>
+        <Link href="/products">Ver todo</Link>
       </PopoverContent>
     </Popover>
   );

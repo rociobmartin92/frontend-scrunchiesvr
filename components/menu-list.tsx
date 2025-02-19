@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
 const MenuList = () => {
   return (
@@ -28,16 +28,15 @@ const MenuList = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Accesorios</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-               <ListItem href="/accesories/scrunchies" title="Chuflines">
-                Los mejores chuflines para darle un toque especial a tu peinado.
-              </ListItem>
-              <ListItem href="/accesories/hairClips" title="Hebillas">
-                Encuentra hebillas elegantes y modernas para cualquier ocasión.
-              </ListItem>
-              <ListItem href="/accesories/bandanas" title="Bandanas">
-                Bandanas de todos los colores y estilos para complementar tu look.
-              </ListItem>
+            <ul className="grid gap-3 p-4 md:w-[300px] lg:w-[400px] lg:grid-cols-[.95fr_1fr]">
+              <ListItem href="/scrunchies" title="Chuflines" />
+             
+              <ListItem href="/hairClips" title="Hebillas" />
+             
+              <ListItem href="/bandanas" title="Bandanas" />
+               
+  
+              <ListItem href="/products" title="Ver todo" />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -50,11 +49,10 @@ const MenuList = () => {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
-}
+  );
+};
 
-export default MenuList
-
+export default MenuList;
 
 const ListItem = React.forwardRef<
   React.ComponentRef<"a">,
@@ -66,18 +64,18 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md text-center p-2 leading-none no-underline outline-none transition-colors hover:border hover:border-pink-600 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="text-sm mt-1 leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
+ListItem.displayName = "ListItem";

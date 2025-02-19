@@ -11,9 +11,9 @@ export default function Home() {
       <main>
         <BannerCards />
         <BestSellers />
+        <ChooseCategory />
         <BannerCollections />
         <DiscountCard />
-        <ChooseCategory />
       </main>
       <Toaster />
     </div>
