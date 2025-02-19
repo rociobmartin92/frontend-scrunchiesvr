@@ -14,16 +14,16 @@ const BannerCollections = () => {
   return (
     <div className="max-w-screen-2xl w-full sm:py-10 my-0 py-0">
       {result.map((collection) => (
-        <div>
-          <HeaderTitle title={`Colección ${collection.collectionName}`} className=""  />
-          {/* <HeaderTitleCursive title={`Colección ${collection.collectionName}`} /> */}
-
+        <div> 
+          <div className="mt-10">
+            <HeaderTitle title={`Colección ${collection.collectionName}`} className={"mb-0"} />
+          </div>
           <Carousel
             opts={{
               align: "start",
             }}
             orientation="vertical"
-            className="w-full max-w-screen-2x mx-auto mt-0 "
+            className="w-full max-w-screen-2x mx-auto mt-0 p-0"
           >
             <CarouselContent className="my-5 ">
               {collection.images.map((image, index) => (

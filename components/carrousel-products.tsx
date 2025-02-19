@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import useGetProducts from "@/services/useGetProducts";
 import SkeletonSchema from "./skeleton-schema";
 import { Heart, ShoppingCart } from "lucide-react";
@@ -14,24 +13,20 @@ import {
 } from "./ui/carousel";
 import { Card, CardContent } from "./ui/card";
 import IconButton from "./icon-button";
-import HeaderTitle from "./header-title";
 import { base_url } from "@/services/api";
 import { useCart } from "@/state/use-cart";
 import { useFavorites } from "@/state/use-favorites";
 
-
-const FeaturedProducs = ({filters}) => {
-
-
+const CarrouselProducs = ({ filters }: { filters: {} }) => {
   const { result, error, loading } = useGetProducts(filters);
   const typeOfWindow: boolean = isMobile();
 
   const { addItem } = useCart();
   const { addFavorite, items: favorites } = useFavorites();
 
+
   return (
     <div className="max-w-6xl mx-auto sm:py-10  items-center">
-      <HeaderTitle title="Más Vendidos" />
       <Carousel
         opts={{
           align: "start",
@@ -90,4 +85,4 @@ const FeaturedProducs = ({filters}) => {
   );
 };
 
-export default FeaturedProducs;
+export default CarrouselProducs;

@@ -45,7 +45,7 @@ function Navbar() {
         </div>
 
         <User className="cursor-pointer" />
-        <ModeToggle />
+        {/* <ModeToggle /> */}
       </div>
     </div>
   );

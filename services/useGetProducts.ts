@@ -30,7 +30,9 @@ const useGetProducts = (filters?: any) => {
         url += `?${queryParams}`; // Añadimos los filtros a la URL
       }
 
-      const response = await apiInstance.get(url + "&populate=*");
+      const response = await apiInstance.get(
+        url + (Object.keys(filters).length > 0 ? "&populate=*" : "?populate=*")
+      );
 
       setResult(response.data.data || []);
     } catch (error) {

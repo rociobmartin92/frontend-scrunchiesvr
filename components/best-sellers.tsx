@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
-import FeaturedProducs from "./features-products";
+import CarrouselProducs from "./carrousel-products";
+import HeaderTitle from "./header-title";
 
 const BestSellers = () => {
   const filters = useMemo(() => {
@@ -8,7 +9,8 @@ const BestSellers = () => {
 
   return (
     <>
-      <FeaturedProducs filters={filters} />
+      <HeaderTitle title="Más Vendidos" />
+      <CarrouselProducs filters={filters} />
     </>
   );
 };

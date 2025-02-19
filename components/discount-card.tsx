@@ -10,7 +10,7 @@ const DiscountCard = () => {
           Consigue hasta un 15% de descuento
         </h2>
         <p className="text-gray-700">
-          En compras mayores a 9.000 pesos ARS <span className="font-semibold">sólo por hoy.</span> 
+          En compras mayores a 19.000 pesos ARS <span className="font-semibold">sólo por hoy.</span> 
         </p>
         <p className="text-gray-900 font-bold">Utiliza el código: <span className="text-pink-600">RM32</span></p>
         <div className="flex gap-4 mt-4">
