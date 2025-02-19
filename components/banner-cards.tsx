@@ -48,9 +48,9 @@ const BannerCards = () => {
       <CarouselContent className=" ">
         {carouselItems.map((item, index) => (
           <CarouselItem key={index} className="">
-            <Card className="shadow-md h-32">
-              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                <h3 className="text-lg font-semibold text-pink-700">{item.title}</h3>
+            <Card className="shadow-md h-28">
+              <CardContent className="flex flex-col items-center justify-center h-full text-center">
+                <h3 className="text-lg  font-semibold text-pink-700">{item.title}</h3>
                 <p className="text-sm  mt-2">{item.subtitle}</p>
                 {item.description && <p className="text-xs  mt-2">{item.description}</p>}
               </CardContent>

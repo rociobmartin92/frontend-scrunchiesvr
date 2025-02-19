@@ -20,10 +20,8 @@ import { useCart } from "@/state/use-cart";
 import { useFavorites } from "@/state/use-favorites";
 
 
-const FeaturedProducs = () => {
-  const filters = useMemo(() => {
-    return { bestSeller: true };
-  }, []);
+const FeaturedProducs = ({filters}) => {
+
 
   const { result, error, loading } = useGetProducts(filters);
   const typeOfWindow: boolean = isMobile();

@@ -1,8 +1,8 @@
 import BannerCards from "@/components/banner-cards";
 import BannerCollections from "@/components/banner-colletions";
+import BestSellers from "@/components/best-sellers";
 import ChooseCategory from "@/components/choose-category";
 import DiscountCard from "@/components/discount-card";
-import FeaturedProducs from "@/components/features-products";
 import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
@@ -10,10 +10,10 @@ export default function Home() {
     <div>
       <main>
         <BannerCards />
-        <FeaturedProducs />
+        <BestSellers />
+        <BannerCollections />
         <DiscountCard />
         <ChooseCategory />
-        <BannerCollections />
       </main>
       <Toaster />
     </div>
